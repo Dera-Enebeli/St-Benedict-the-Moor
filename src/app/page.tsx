@@ -185,7 +185,7 @@ export default function Home() {
           <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed">
             Everyone has a home at St. Benedict the Moor. Come join us and experience the love of Christ together.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4 mb-12">
             <button 
               onClick={() => scrollToSection("mass-times")} 
               className="btn-primary text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg shadow-xl"
@@ -296,7 +296,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
           <div className="w-8 h-12 border-2 border-white/50 rounded-full flex justify-center pt-2">
             <div className="w-1.5 h-3 bg-white rounded-full"></div>
           </div>
