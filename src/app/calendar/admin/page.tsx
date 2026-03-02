@@ -4,28 +4,20 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-
-interface CalendarEvent {
-  id: string;
-  title: string;
-  date: string;
-  time: string;
-  location: string;
-  description: string;
-}
+import { CalendarEvent } from "../types";
+import { defaultEvents } from "../data";
 
 const ADMIN_PASSWORD = "stbenedict";
 
 function getInitialEvents(): CalendarEvent[] {
-  if (typeof window === 'undefined') return [];
+  if (typeof window === 'undefined') return defaultEvents;
   const stored = localStorage.getItem("church-events");
-  return stored ? JSON.parse(stored) : [];
+  return stored ? JSON.parse(stored) : defaultEvents;
 }
 
 export default function AdminPage() {
   const router = useRouter();
   const [events, setEvents] = useState<CalendarEvent[]>(getInitialEvents);
-  const [isAdmin, setIsAdmin] = useState(false);
   const [showLogin, setShowLogin] = useState(true);
   const [password, setPassword] = useState("");
   const [showEventForm, setShowEventForm] = useState(false);
@@ -49,7 +41,6 @@ export default function AdminPage() {
 
   const handleLogin = () => {
     if (password === ADMIN_PASSWORD) {
-      setIsAdmin(true);
       setShowLogin(false);
       setPassword("");
       localStorage.setItem("church-admin", "true");
@@ -59,7 +50,7 @@ export default function AdminPage() {
   };
 
   const handleLogout = () => {
-    setIsAdmin(false);
+    setShowLogin(true);
     localStorage.removeItem("church-admin");
     router.push("/calendar");
   };
@@ -99,6 +90,12 @@ export default function AdminPage() {
 
   const groupedEvents = groupEventsByDate();
 
+  const handleCopyToClipboard = () => {
+    const json = `export const defaultEvents: CalendarEvent[] = ${JSON.stringify(events, null, 2)};`;
+    navigator.clipboard.writeText(json);
+    alert("Events copied to clipboard! Paste this into src/app/calendar/data.ts to update the deployed site.");
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Unified Navbar */}
@@ -122,7 +119,7 @@ export default function AdminPage() {
               </span>
             </div>
             <div className="flex items-center space-x-4">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="gold-icon">
+              <a href="https://www.facebook.com/stbenthemoor" target="_blank" rel="noopener noreferrer" className="gold-icon">
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M18.77,7.46H14.5v-1.9c0-.9.6-1.1,1-1.1h3V.5h-4.33C10.24.5,9.5,3.44,9.5,5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4Z" />
                 </svg>
@@ -251,6 +248,12 @@ export default function AdminPage() {
                   View Public Calendar
                 </Link>
                 <button
+                  onClick={handleCopyToClipboard}
+                  className="text-[#8A6F2D] hover:text-[#9F7F3D] text-sm font-medium"
+                >
+                  Copy for Deploy
+                </button>
+                <button
                   onClick={handleLogout}
                   className="text-gray-500 hover:text-red-500 text-sm transition-colors"
                 >
@@ -337,7 +340,7 @@ export default function AdminPage() {
                     </svg>
                   </div>
                   <p className="text-gray-600 text-lg font-medium">No events yet.</p>
-                  <p className="text-gray-400 mt-2">Click "Add Event" to create your first event.</p>
+                  <p className="text-gray-400 mt-2">Click &quot;Add Event&quot; to create your first event.</p>
                 </div>
               ) : (
                 <div className="space-y-4">

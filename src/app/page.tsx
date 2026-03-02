@@ -61,7 +61,7 @@ export default function Home() {
               </a>
             </div>
             <div className="flex items-center space-x-4">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="gold-icon">
+              <a href="https://www.facebook.com/stbenthemoor" target="_blank" rel="noopener noreferrer" className="gold-icon">
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M18.77,7.46H14.5v-1.9c0-.9.6-1.1,1-1.1h3V.5h-4.33C10.24.5,9.5,3.44,9.5,5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4Z" />
                 </svg>
@@ -217,15 +217,19 @@ export default function Home() {
               Welcome to St. Benedict the Moor
             </h2>
             <div className="gold-divider mx-auto mb-6"></div>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-              We, the people of St. Benedict the Moor, believing in God, and guided by the Holy Spirit, 
-              dedicate ourselves to forming a vibrant Christian community by: celebrating the presence of 
-              Jesus, serving the needs of the people, affirming the gifts of each person, and sharing 
-              lives and prayer, in love.
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <p className="text-lg text-gray-600 leading-relaxed text-center">
+              We, the people of God of Saint Benedict the Moor Catholic Church, Omaha, Nebraska, 
+              are joined together in faith, worship and service to our community. We are called to love one another as the Father loves us and to set an example of caring compassion for everyone we meet. 
+              We are proud of our African American heritage, spirituality, and culture, which we eagerly share with one another, our church, and our country. 
+              Our goal is to reach out to those who hunger for the Word of God and seek a welcoming place to worship and grow in faith. 
+              We are determined to live up to this commitment as followers of Jesus Christ.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-6 mt-16">
             <div className="modern-card p-6 text-center group">
               <div className="w-16 h-16 bg-[#8A6F2D]/10 rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:bg-[#8A6F2D] transition-colors">
                 <svg className="w-8 h-8 text-[#8A6F2D] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -259,9 +263,57 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Our Church Section */}
+      <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src="/church-1.jpeg" 
+            alt="St. Benedict the Moor Church" 
+            fill 
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/60"></div>
+        </div>
+        
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          <span className="text-[#C9A227] font-semibold text-sm tracking-wider">COME WORSHIP WITH US</span>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mt-4 mb-6 font-[family-name:var(--font-source-serif)]">
+            Visit Our Church
+          </h2>
+          <div className="w-24 h-1 bg-[#C9A227] mx-auto mb-6"></div>
+          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
+            Join us for Mass and experience the warmth of our community. 
+            Our doors are always open to welcome new members.
+          </p>
+          <div className="flex justify-center">
+            <a 
+              href="#mass-times" 
+              className="bg-[#8A6F2D] hover:bg-[#9F7F3D] text-white px-8 py-4 rounded-full font-semibold text-lg transition-all"
+            >
+              View Mass Times
+            </a>
+          </div>
+        </div>
+
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="w-8 h-12 border-2 border-white/50 rounded-full flex justify-center pt-2">
+            <div className="w-1.5 h-3 bg-white rounded-full"></div>
+          </div>
+        </div>
+      </section>
+
       {/* Mass Times Section */}
-      <section id="mass-times" className="py-20 bg-gradient-to-b from-white to-[#FDF8F3]">
-        <div className="max-w-7xl mx-auto px-4">
+      <section id="mass-times" className="py-20 bg-gradient-to-b from-white to-[#FDF8F3] relative overflow-hidden">
+        <div className="absolute inset-0">
+          <Image 
+            src="/church-1.jpeg" 
+            alt="Church" 
+            fill 
+            className="object-cover opacity-15" 
+          />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
           <div className="text-center mb-12">
             <span className="text-[#8A6F2D] font-semibold text-sm tracking-wider">JOIN US IN WORSHIP</span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mt-2 font-[family-name:var(--font-source-serif)]">
@@ -420,6 +472,14 @@ export default function Home() {
 
       {/* Newsletter Section */}
       <section className="py-20 newsletter-gradient relative overflow-hidden">
+        <div className="absolute inset-0">
+          <Image 
+            src="/church-2.jpeg" 
+            alt="Church" 
+            fill 
+            className="object-cover opacity-35" 
+          />
+        </div>
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 font-[family-name:var(--font-source-serif)]">
             Stay Connected
@@ -461,17 +521,17 @@ export default function Home() {
                 A vibrant and diverse Catholic community welcoming everyone to experience the love of Christ.
               </p>
               <div className="flex space-x-3">
-                <a href="#" className="footer-social">
+                <a href="https://www.facebook.com/stbenthemoor" target="_blank" rel="noopener noreferrer" className="footer-social">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M18.77,7.46H14.5v-1.9c0-.9.6-1.1,1-1.1h3V.5h-4.33C10.24.5,9.5,3.44,9.5,5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4Z" />
                   </svg>
                 </a>
-                <a href="#" className="footer-social">
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="footer-social">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12,2.16c3.2,0,3.58,0,4.85.07,3.25.15,4.77,1.69,4.92,4.92.06,1.27.07,1.65.07,4.85s0,3.58-.07,4.85c-.15,3.23-1.66,4.77-4.92,4.92-1.27.06-1.65.07-4.85.07s-3.58,0-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s0-3.58.07-4.85C2.38,3.92,3.9,2.38,7.15,2.23,8.42,2.18,8.8,2.16,12,2.16ZM12,0C8.74,0,8.33,0,7.05.07c-4.35.2-6.78,2.62-7,7C0,8.33,0,8.74,0,12s0,3.67.07,4.95c.2,4.36,2.62,6.78,7,7C8.33,24,8.74,24,12,24s3.67,0,4.95-.07c4.35-.2,6.78-2.62,7-7C24,15.67,24,15.26,24,12s0-3.67-.07-4.95c-.2-4.35-2.62-6.78-7-7C15.67,0,15.26,0,12,0Zm0,5.84A6.16,6.16,0,1,0,18.16,12,6.16,6.16,0,0,0,12,5.84ZM12,16a4,4,0,1,1,4-4A4,4,0,0,1,12,16ZM18.41,4.15a1.44,1.44,0,1,0,1.44,1.44A1.44,1.44,0,0,0,18.41,4.15Z" />
                   </svg>
                 </a>
-                <a href="#" className="footer-social">
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="footer-social">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M23.5,6.19a3.02,3.02,0,0,0-2.12-2.14C19.54,3.5,12,3.5,12,3.5s-7.54,0-9.38.55A3.02,3.02,0,0,0,.5,6.19,31.56,31.56,0,0,0,0,12a31.56,31.56,0,0,0,.5,5.81,3.02,3.02,0,0,0,2.12,2.14c1.84.55,9.38.55,9.38.55s7.54,0,9.38-.55a3.02,3.02,0,0,0,2.12-2.14A31.56,31.56,0,0,0,24,12,31.56,31.56,0,0,0,23.5,6.19ZM9.55,15.57V8.43L15.82,12Z" />
                   </svg>
@@ -485,6 +545,30 @@ export default function Home() {
                 <li><button onClick={() => scrollToSection("about")} className="hover:text-white transition-colors">About Us</button></li>
                 <li><button onClick={() => scrollToSection("mass-times")} className="hover:text-white transition-colors">Mass Times</button></li>
                 <li><Link href="/calendar" className="hover:text-white transition-colors">Calendar</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4 text-[#8A6F2D]">Contact</h4>
+              <ul className="space-y-3 text-gray-400">
+                <li className="flex items-center gap-2">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  2423 Grant Street, Omaha, NE 68111
+                </li>
+                <li className="flex items-center gap-2">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  402-451-5755
+                </li>
+                <li className="flex items-center gap-2">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  rongaspard@cox.net
+                </li>
               </ul>
             </div>
             <div>

@@ -3,24 +3,17 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
-interface CalendarEvent {
-  id: string;
-  title: string;
-  date: string;
-  time: string;
-  location: string;
-  description: string;
-}
+import { CalendarEvent } from "./types";
+import { defaultEvents } from "./data";
 
 function getInitialEvents(): CalendarEvent[] {
-  if (typeof window === 'undefined') return [];
+  if (typeof window === 'undefined') return defaultEvents;
   const stored = localStorage.getItem("church-events");
-  return stored ? JSON.parse(stored) : [];
+  return stored ? JSON.parse(stored) : defaultEvents;
 }
 
 export default function CalendarPage() {
-  const [events, setEvents] = useState<CalendarEvent[]>(getInitialEvents);
+  const [events] = useState<CalendarEvent[]>(getInitialEvents);
   const [scrolled, setScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [expandedDates, setExpandedDates] = useState<Set<string>>(new Set());
@@ -89,7 +82,7 @@ export default function CalendarPage() {
               </a>
             </div>
             <div className="flex items-center space-x-4">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="gold-icon">
+              <a href="https://www.facebook.com/stbenthemoor" target="_blank" rel="noopener noreferrer" className="gold-icon">
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M18.77,7.46H14.5v-1.9c0-.9.6-1.1,1-1.1h3V.5h-4.33C10.24.5,9.5,3.44,9.5,5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4Z" />
                 </svg>
