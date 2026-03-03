@@ -29,6 +29,9 @@ export default function Home() {
     { label: "About", section: "about" },
     { label: "Mass Times", section: "mass-times" },
     { label: "Ministries", section: "ministries" },
+    { label: "Welcome", href: "/welcome" },
+    { label: "Leadership", href: "/leadership" },
+    { label: "Support", href: "/support" },
   ];
 
   return (
@@ -66,16 +69,6 @@ export default function Home() {
                   <path d="M18.77,7.46H14.5v-1.9c0-.9.6-1.1,1-1.1h3V.5h-4.33C10.24.5,9.5,3.44,9.5,5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4Z" />
                 </svg>
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="gold-icon">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12,2.16c3.2,0,3.58,0,4.85.07,3.25.15,4.77,1.69,4.92,4.92.06,1.27.07,1.65.07,4.85s0,3.58-.07,4.85c-.15,3.23-1.66,4.77-4.92,4.92-1.27.06-1.65.07-4.85.07s-3.58,0-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s0-3.58.07-4.85C2.38,3.92,3.9,2.38,7.15,2.23,8.42,2.18,8.8,2.16,12,2.16ZM12,0C8.74,0,8.33,0,7.05.07c-4.35.2-6.78,2.62-7,7C0,8.33,0,8.74,0,12s0,3.67.07,4.95c.2,4.36,2.62,6.78,7,7C8.33,24,8.74,24,12,24s3.67,0,4.95-.07c4.35-.2,6.78-2.62,7-7C24,15.67,24,15.26,24,12s0-3.67-.07-4.95c-.2-4.35-2.62-6.78-7-7C15.67,0,15.26,0,12,0Zm0,5.84A6.16,6.16,0,1,0,18.16,12,6.16,6.16,0,0,0,12,5.84ZM12,16a4,4,0,1,1,4-4A4,4,0,0,1,12,16ZM18.41,4.15a1.44,1.44,0,1,0,1.44,1.44A1.44,1.44,0,0,0,18.41,4.15Z" />
-                </svg>
-              </a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="gold-icon">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M23.5,6.19a3.02,3.02,0,0,0-2.12-2.14C19.54,3.5,12,3.5,12,3.5s-7.54,0-9.38.55A3.02,3.02,0,0,0,.5,6.19,31.56,31.56,0,0,0,0,12a31.56,31.56,0,0,0,.5,5.81,3.02,3.02,0,0,0,2.12,2.14c1.84.55,9.38.55,9.38.55s7.54,0,9.38-.55a3.02,3.02,0,0,0,2.12-2.14A31.56,31.56,0,0,0,24,12,31.56,31.56,0,0,0,23.5,6.19ZM9.55,15.57V8.43L15.82,12Z" />
-                </svg>
-              </a>
             </div>
           </div>
         </div>
@@ -99,13 +92,23 @@ export default function Home() {
             </div>
             <div className="hidden md:flex items-center space-x-8">
               {navLinks.map((link) => (
-                <button 
-                  key={link.section}
-                  onClick={() => scrollToSection(link.section)} 
-                  className="nav-link text-gray-700 hover:text-[#8A6F2D] transition-colors text-sm font-medium"
-                >
-                  {link.label}
-                </button>
+                link.href ? (
+                  <Link 
+                    key={link.label}
+                    href={link.href}
+                    className="nav-link text-gray-700 hover:text-[#8A6F2D] transition-colors text-sm font-medium"
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <button 
+                    key={link.section}
+                    onClick={() => scrollToSection(link.section || "")} 
+                    className="nav-link text-gray-700 hover:text-[#8A6F2D] transition-colors text-sm font-medium"
+                  >
+                    {link.label}
+                  </button>
+                )
               ))}
               <Link 
                 href="/calendar" 
@@ -137,13 +140,23 @@ export default function Home() {
         >
           <div className="px-4 py-4 space-y-3">
             {navLinks.map((link) => (
-              <button 
-                key={link.section}
-                onClick={() => scrollToSection(link.section)} 
-                className="block text-gray-700 hover:text-[#8A6F2D] text-base font-medium w-full text-left py-2"
-              >
-                {link.label}
-              </button>
+              link.href ? (
+                <Link 
+                  key={link.label}
+                  href={link.href}
+                  className="block text-gray-700 hover:text-[#8A6F2D] text-base font-medium w-full text-left py-2"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <button 
+                  key={link.section}
+                  onClick={() => scrollToSection(link.section || "")} 
+                  className="block text-gray-700 hover:text-[#8A6F2D] text-base font-medium w-full text-left py-2"
+                >
+                  {link.label}
+                </button>
+              )
             ))}
             <Link 
               href="/calendar" 
@@ -159,7 +172,7 @@ export default function Home() {
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ paddingTop: '5rem' }}>
         <div className="absolute inset-0" style={{ top: '3rem' }}>
           <Image 
-            src="/hero-bg.png" 
+            src="/new-church-hero.png" 
             alt="St. Benedict the Moor Church" 
             fill 
             className="object-cover" 
@@ -169,7 +182,7 @@ export default function Home() {
         </div>
         
         <div className="relative z-10 max-w-5xl mx-auto px-4 text-center pt-20">
-          <div className="inline-flex items-center gap-3 bg-white/20 backdrop-blur-md px-6 py-2.5 rounded-full mb-6 border border-white/30 animate-fade-in-up">
+          <Link href="/welcome" className="inline-flex items-center gap-3 bg-white/20 backdrop-blur-md px-6 py-2.5 rounded-full mb-6 border border-white/30 animate-fade-in-up hover:bg-white/30 transition-colors">
             <Image 
               src="/New-logo.jpeg" 
               alt="Logo" 
@@ -178,25 +191,27 @@ export default function Home() {
               className="object-contain h-6 w-auto"
             />
             <span className="text-white font-medium text-xs tracking-wider">WELCOME TO OUR PARISH</span>
-          </div>
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight font-[family-name:var(--font-source-serif)]">
-            We Are a Vibrant &<br /><span className="gradient-text">Diverse</span> Community
-          </h1>
+          </Link>
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight font-[family-name:var(--font-source-serif)]">
+              We Are<br /><span className="gradient-text">St. Benedict the Moor</span>
+            </h1>
           <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed">
             Everyone has a home at St. Benedict the Moor. Come join us and experience the love of Christ together.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4 mb-25">
-            <button 
-              onClick={() => scrollToSection("mass-times")} 
-              className="btn-primary text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg shadow-xl"
-            >
-              Join Us for Mass
-            </button>
             <Link 
-              href="/calendar" 
+              href="https://www.facebook.com/stbenthemoor"
+              target="_blank"
+              rel="noopener noreferrer"
               className="border-2 border-white text-white hover:bg-white hover:text-[#1E8E3E] px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg transition-all text-center"
             >
-              View Calendar
+              View Mass Online
+            </Link>
+            <Link 
+              href="/welcome"
+              className="bg-[#C9A227] hover:bg-[#d4b33a] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg transition-all text-center"
+            >
+              Welcome Letter
             </Link>
           </div>
         </div>
@@ -237,7 +252,7 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="text-xl text-gray-800 mb-2 font-[family-name:var(--font-source-serif)]">Our Heritage</h3>
-              <p className="text-gray-600">Serving the Omaha community for over 50 years with faith and dedication.</p>
+              <p className="text-gray-600">Serving the Omaha community for over 100 years with faith and dedication.</p>
             </div>
 
             <div className="modern-card p-6 text-center group">
@@ -256,8 +271,11 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl text-gray-800 mb-2 font-[family-name:var(--font-source-serif)]">Join Our Community</h3>
+              <h3 className="text-xl text-gray-800 mb-2 font-[family-name:var(--font-source-serif)]">Join Our Apostolic Priorities</h3>
               <p className="text-gray-600">Experience the love of Christ together in our vibrant parish.</p>
+              <Link href="/apostolic" className="inline-block mt-3 text-[#8A6F2D] hover:text-[#C9A227] font-medium text-sm">
+                Learn More →
+              </Link>
             </div>
           </div>
         </div>
@@ -374,7 +392,7 @@ export default function Home() {
 
           <div className="mt-10 bg-gradient-to-r from-[#8A6F2D]/10 to-[#C9A227]/10 rounded-2xl p-6 text-center max-w-lg mx-auto border border-[#8A6F2D]/20">
             <p className="text-gray-700">
-              <span className="font-semibold text-[#8A6F2D]">Confessions:</span> Available 30 minutes before weekend Masses
+              <span className="font-semibold text-[#8A6F2D]">Confessions:</span> After weekend Masses & by appointment
             </p>
           </div>
 
@@ -462,15 +480,91 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-3 font-[family-name:var(--font-source-serif)]">Prayer Ministry</h3>
+              <h3 className="text-xl font-bold text-gray-800 mb-3 font-[family-name:var(--font-source-serif)]">Request a Prayer</h3>
               <div className="w-12 h-0.5 bg-[#8A6F2D] mb-3 group-hover:bg-[#C9A227] transition-colors"></div>
-              <p className="text-gray-600">Lifting up our community in prayer through prayer groups and intercessory prayer.</p>
+              <p className="text-gray-600">Contact parish office to request prayers for your intentions.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Newsletter Section */}
+      {/* Historic 24th Street Family of Parishes */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <span className="text-[#8A6F2D] font-semibold text-sm tracking-wider">OUR FAMILY OF PARISHES</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mt-2 font-[family-name:var(--font-source-serif)]">
+              Historic 24th Street Family of Parishes
+            </h2>
+            <div className="gold_divider mx-auto mt-4"></div>
+            <p className="text-xl text-gray-600 mt-4 max-w-2xl mx-auto">
+              We are united with our neighboring parishes in faith and mission.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="modern-card p-8 text-center group">
+              <div className="w-16 h-16 bg-[#8A6F2D]/10 rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:bg-[#8A6F2D] transition-colors">
+                <svg className="w-8 h-8 text-[#8A6F2D] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-800 mb-2 font-[family-name:var(--font-source-serif)]">Sacred Heart</h3>
+              <p className="text-gray-600 mb-4">Historic parish serving the community</p>
+              <a href="https://www.sacredheartchurchomaha.org/" target="_blank" rel="noopener noreferrer" className="inline-block text-[#8A6F2D] hover:text-[#C9A227] font-medium text-sm">
+                Visit Website →
+              </a>
+            </div>
+
+            <div className="modern-card p-8 text-center group">
+              <div className="w-16 h-16 bg-[#1E8E3E]/10 rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:bg-[#1E8E3E] transition-colors">
+                <svg className="w-8 h-8 text-[#1E8E3E] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-800 mb-2 font-[family-name:var(--font-source-serif)]">St. John&apos;s</h3>
+              <p className="text-gray-600 mb-4">Historic parish serving the community</p>
+              <a href="#" className="inline-block text-[#1E8E3E] hover:text-[#2da650] font-medium text-sm">
+                Visit Website →
+              </a>
+            </div>
+
+            <div className="modern-card p-8 text-center group">
+              <div className="w-16 h-16 bg-[#C9A227]/10 rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:bg-[#C9A227] transition-colors">
+                <svg className="w-8 h-8 text-[#C9A227] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-800 mb-2 font-[family-name:var(--font-source-serif)]">St. Benedict the Moor</h3>
+              <p className="text-gray-600 mb-4">Our home parish</p>
+              <a href="#home" className="inline-block text-[#C9A227] hover:text-[#d4b33a] font-medium text-sm">
+                Learn More →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Capital Campaign Section */}
+      <section className="py-20 bg-gradient-to-b from-[#FDF8F3] to-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <span className="text-[#8A6F2D] font-semibold text-sm tracking-wider">SUPPORT OUR CHURCH</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mt-2 font-[family-name:var(--font-source-serif)]">
+              Capital Campaign – Projects in Need of Support
+            </h2>
+            <div className="gold-divider mx-auto mt-4"></div>
+          </div>
+
+          <div className="text-center">
+            <Link href="/support" className="inline-block bg-[#8A6F2D] hover:bg-[#9F7F3D] text-white px-8 py-4 rounded-full font-semibold text-lg transition-all hover:shadow-lg hover:shadow-yellow-600/30">
+              Learn More & Support
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter
       <section className="py-20 newsletter-gradient relative overflow-hidden">
         <div className="absolute inset-0">
           <Image 
@@ -524,16 +618,6 @@ export default function Home() {
                 <a href="https://www.facebook.com/stbenthemoor" target="_blank" rel="noopener noreferrer" className="footer-social">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M18.77,7.46H14.5v-1.9c0-.9.6-1.1,1-1.1h3V.5h-4.33C10.24.5,9.5,3.44,9.5,5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4Z" />
-                  </svg>
-                </a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="footer-social">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12,2.16c3.2,0,3.58,0,4.85.07,3.25.15,4.77,1.69,4.92,4.92.06,1.27.07,1.65.07,4.85s0,3.58-.07,4.85c-.15,3.23-1.66,4.77-4.92,4.92-1.27.06-1.65.07-4.85.07s-3.58,0-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s0-3.58.07-4.85C2.38,3.92,3.9,2.38,7.15,2.23,8.42,2.18,8.8,2.16,12,2.16ZM12,0C8.74,0,8.33,0,7.05.07c-4.35.2-6.78,2.62-7,7C0,8.33,0,8.74,0,12s0,3.67.07,4.95c.2,4.36,2.62,6.78,7,7C8.33,24,8.74,24,12,24s3.67,0,4.95-.07c4.35-.2,6.78-2.62,7-7C24,15.67,24,15.26,24,12s0-3.67-.07-4.95c-.2-4.35-2.62-6.78-7-7C15.67,0,15.26,0,12,0Zm0,5.84A6.16,6.16,0,1,0,18.16,12,6.16,6.16,0,0,0,12,5.84ZM12,16a4,4,0,1,1,4-4A4,4,0,0,1,12,16ZM18.41,4.15a1.44,1.44,0,1,0,1.44,1.44A1.44,1.44,0,0,0,18.41,4.15Z" />
-                  </svg>
-                </a>
-                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="footer-social">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M23.5,6.19a3.02,3.02,0,0,0-2.12-2.14C19.54,3.5,12,3.5,12,3.5s-7.54,0-9.38.55A3.02,3.02,0,0,0,.5,6.19,31.56,31.56,0,0,0,0,12a31.56,31.56,0,0,0,.5,5.81,3.02,3.02,0,0,0,2.12,2.14c1.84.55,9.38.55,9.38.55s7.54,0,9.38-.55a3.02,3.02,0,0,0,2.12-2.14A31.56,31.56,0,0,0,24,12,31.56,31.56,0,0,0,23.5,6.19ZM9.55,15.57V8.43L15.82,12Z" />
                   </svg>
                 </a>
               </div>
