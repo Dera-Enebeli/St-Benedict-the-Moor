@@ -37,7 +37,6 @@ const navLinks = [
     { label: "Mass Times", section: "mass-times" },
     { label: "Ministries", section: "ministries" },
     { label: "Welcome", href: "/welcome" },
-    { label: "Leadership", href: "/leadership" },
     { label: "Support", href: "/support" },
     // { label: "Calendar", href: "/calendar" },
   ];
@@ -547,6 +546,161 @@ const navLinks = [
               <a href="#home" className="inline-block text-[#C9A227] hover:text-[#d4b33a] font-medium text-sm">
                 Learn More →
               </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Leadership Section */}
+      <section id="leadership" className="py-20 bg-[#FDF8F3]">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <span className="text-[#8A6F2D] font-semibold text-sm tracking-wider">MEET OUR TEAM</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mt-2 font-[family-name:var(--font-source-serif)]">
+              Leadership Team
+            </h2>
+            <div className="gold-divider mx-auto mt-4"></div>
+          </div>
+
+          {/* Mobile: Stack all cards vertically */}
+          <div className="md:hidden space-y-4 max-w-sm mx-auto">
+            <div className="modern-card p-4 text-center group">
+              <div className="w-16 h-16 bg-[#8A6F2D]/10 rounded-full flex items-center justify-center mb-3 mx-auto group-hover:bg-[#8A6F2D] transition-colors">
+                <svg className="w-8 h-8 text-[#8A6F2D] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </div>
+              <h3 className="text-base font-bold text-gray-800 mb-1 font-[family-name:var(--font-source-serif)]">Rev. David Korth</h3>
+              <p className="text-[#8A6F2D] font-medium text-sm mb-1">Pastor</p>
+              <a href="mailto:dmkorth@archomaha.org" className="text-gray-500 hover:text-[#8A6F2D] text-xs transition-colors">
+                dmkorth@archomaha.org
+              </a>
+            </div>
+
+            <div className="modern-card p-4 text-center group">
+              <div className="w-16 h-16 bg-[#1E8E3E]/10 rounded-full flex items-center justify-center mb-3 mx-auto group-hover:bg-[#1E8E3E] transition-colors">
+                <svg className="w-8 h-8 text-[#1E8E3E] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </div>
+              <h3 className="text-base font-bold text-gray-800 mb-1 font-[family-name:var(--font-source-serif)]">Thierry Mazimpaka</h3>
+              <p className="text-[#1E8E3E] font-medium text-sm mb-1">Director of Discipleship</p>
+              <a href="mailto:tmazimapaka@archomaha.org" className="text-gray-500 hover:text-[#1E8E3E] text-xs transition-colors">
+                tmazimapaka@archomaha.org
+              </a>
+            </div>
+
+            <div className="modern-card p-4 text-center group">
+              <div className="w-16 h-16 bg-[#C9A227]/10 rounded-full flex items-center justify-center mb-3 mx-auto group-hover:bg-[#C9A227] transition-colors">
+                <svg className="w-8 h-8 text-[#C9A227] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </div>
+              <h3 className="text-base font-bold text-gray-800 mb-1 font-[family-name:var(--font-source-serif)]">Michella Blankman</h3>
+              <p className="text-[#C9A227] font-medium text-sm mb-1">Families of Faith Director</p>
+              <a href="mailto:meblankman@archomaha.org" className="text-gray-500 hover:text-[#C9A227] text-xs transition-colors">
+                meblankman@archomaha.org
+              </a>
+            </div>
+
+            <div className="modern-card p-4 text-center group">
+              <div className="w-16 h-16 bg-[#8A6F2D]/10 rounded-full flex items-center justify-center mb-3 mx-auto group-hover:bg-[#8A6F2D] transition-colors">
+                <svg className="w-8 h-8 text-[#8A6F2D] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </div>
+              <h3 className="text-base font-bold text-gray-800 mb-1 font-[family-name:var(--font-source-serif)]">Jacques Musavyimana</h3>
+              <p className="text-[#8A6F2D] font-medium text-sm mb-1">Member</p>
+              <a href="mailto:jcmusavyimana@archomaha.org" className="text-gray-500 hover:text-[#8A6F2D] text-xs transition-colors">
+                jcmusavyimana@archomaha.org
+              </a>
+            </div>
+
+            <div className="modern-card p-4 text-center group">
+              <div className="w-16 h-16 bg-[#1E8E3E]/10 rounded-full flex items-center justify-center mb-3 mx-auto group-hover:bg-[#1E8E3E] transition-colors">
+                <svg className="w-8 h-8 text-[#1E8E3E] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </div>
+              <h3 className="text-base font-bold text-gray-800 mb-1 font-[family-name:var(--font-source-serif)]">Perlie Whitley</h3>
+              <p className="text-[#1E8E3E] font-medium text-sm mb-1">Member</p>
+              <a href="mailto:whitley29295@gmail.com" className="text-gray-500 hover:text-[#1E8E3E] text-xs transition-colors">
+                whitley29295@gmail.com
+              </a>
+            </div>
+          </div>
+
+          {/* Desktop: Inverted pyramid layout */}
+          <div className="hidden md:block max-w-5xl mx-auto">
+            {/* Row 1: 3 cards */}
+            <div className="grid md:grid-cols-3 gap-6 mb-6">
+              <div className="modern-card p-6 text-center group">
+                <div className="w-20 h-20 bg-[#8A6F2D]/10 rounded-full flex items-center justify-center mb-4 mx-auto group-hover:bg-[#8A6F2D] transition-colors">
+                  <svg className="w-10 h-10 text-[#8A6F2D] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold text-gray-800 mb-1 font-[family-name:var(--font-source-serif)]">Rev. David Korth</h3>
+                <p className="text-[#8A6F2D] font-medium text-sm mb-2">Pastor</p>
+                <a href="mailto:dmkorth@archomaha.org" className="text-gray-500 hover:text-[#8A6F2D] text-xs transition-colors">
+                  dmkorth@archomaha.org
+                </a>
+              </div>
+
+              <div className="modern-card p-6 text-center group">
+                <div className="w-20 h-20 bg-[#1E8E3E]/10 rounded-full flex items-center justify-center mb-4 mx-auto group-hover:bg-[#1E8E3E] transition-colors">
+                  <svg className="w-10 h-10 text-[#1E8E3E] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold text-gray-800 mb-1 font-[family-name:var(--font-source-serif)]">Thierry Mazimpaka</h3>
+                <p className="text-[#1E8E3E] font-medium text-sm mb-2">Director of Discipleship</p>
+                <a href="mailto:tmazimapaka@archomaha.org" className="text-gray-500 hover:text-[#1E8E3E] text-xs transition-colors">
+                  tmazimapaka@archomaha.org
+                </a>
+              </div>
+
+              <div className="modern-card p-6 text-center group">
+                <div className="w-20 h-20 bg-[#C9A227]/10 rounded-full flex items-center justify-center mb-4 mx-auto group-hover:bg-[#C9A227] transition-colors">
+                  <svg className="w-10 h-10 text-[#C9A227] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold text-gray-800 mb-1 font-[family-name:var(--font-source-serif)]">Michella Blankman</h3>
+                <p className="text-[#C9A227] font-medium text-sm mb-2">Families of Faith Director</p>
+                <a href="mailto:meblankman@archomaha.org" className="text-gray-500 hover:text-[#C9A227] text-xs transition-colors">
+                  meblankman@archomaha.org
+                </a>
+              </div>
+            </div>
+
+            {/* Row 2: 2 cards centered */}
+            <div className="flex justify-center gap-6">
+              <div className="modern-card p-6 text-center group w-full max-w-sm">
+                <div className="w-20 h-20 bg-[#8A6F2D]/10 rounded-full flex items-center justify-center mb-4 mx-auto group-hover:bg-[#8A6F2D] transition-colors">
+                  <svg className="w-10 h-10 text-[#8A6F2D] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold text-gray-800 mb-1 font-[family-name:var(--font-source-serif)]">Jacques Musavyimana</h3>
+                <p className="text-[#8A6F2D] font-medium text-sm mb-2">Member</p>
+                <a href="mailto:jcmusavyimana@archomaha.org" className="text-gray-500 hover:text-[#8A6F2D] text-xs transition-colors">
+                  jcmusavyimana@archomaha.org
+                </a>
+              </div>
+
+              <div className="modern-card p-6 text-center group w-full max-w-sm">
+                <div className="w-20 h-20 bg-[#1E8E3E]/10 rounded-full flex items-center justify-center mb-4 mx-auto group-hover:bg-[#1E8E3E] transition-colors">
+                  <svg className="w-10 h-10 text-[#1E8E3E] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold text-gray-800 mb-1 font-[family-name:var(--font-source-serif)]">Perlie Whitley</h3>
+                <p className="text-[#1E8E3E] font-medium text-sm mb-2">Member</p>
+                <a href="mailto:whitley29295@gmail.com" className="text-gray-500 hover:text-[#1E8E3E] text-xs transition-colors">
+                  whitley29295@gmail.com
+                </a>
+              </div>
             </div>
           </div>
         </div>
