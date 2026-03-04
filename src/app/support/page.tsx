@@ -67,14 +67,14 @@ export default function Support() {
         <div className="max-w-4xl mx-auto px-4">
           <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
             {projects.map((project, index) => (
-              <div key={index} className={`flex items-center justify-between p-5 ${index !== 4 ? 'border-b border-gray-100' : ''} hover:bg-gray-50 transition-colors`}>
+              <div key={index} className={`flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 p-5 ${index !== 4 ? 'border-b border-gray-100' : ''} hover:bg-gray-50 transition-colors`}>
                 <div className="flex items-center gap-4">
-                  <span className={`${project.color} text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold`}>
+                  <span className={`${project.color} text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0`}>
                     {index + 1}
                   </span>
-                  <span className="text-gray-800 font-medium">{project.label}</span>
+                  <span className="text-gray-800 font-medium text-sm sm:text-base">{project.label}</span>
                 </div>
-                <span className="text-[#8A6F2D] font-bold text-lg">{project.amount}</span>
+                <span className="text-[#8A6F2D] font-bold text-lg sm:text-xl ml-12 sm:ml-0">{project.amount}</span>
               </div>
             ))}
           </div>

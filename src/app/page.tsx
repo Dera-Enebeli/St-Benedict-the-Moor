@@ -5,18 +5,20 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
+      setShowScrollTop(window.scrollY > 300);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
+const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
@@ -24,7 +26,12 @@ export default function Home() {
     setIsMobileMenuOpen(false);
   };
 
-  const navLinks = [
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setIsMobileMenuOpen(false);
+  };
+
+const navLinks = [
     { label: "Home", section: "home" },
     { label: "About", section: "about" },
     { label: "Mass Times", section: "mass-times" },
@@ -32,6 +39,7 @@ export default function Home() {
     { label: "Welcome", href: "/welcome" },
     { label: "Leadership", href: "/leadership" },
     { label: "Support", href: "/support" },
+    // { label: "Calendar", href: "/calendar" },
   ];
 
   return (
@@ -110,9 +118,9 @@ export default function Home() {
                   </button>
                 )
               ))}
-              <Link 
+<Link 
                 href="/calendar" 
-                className="bg-[#8A6F2D] hover:bg-[#9F7F3D] text-white px-5 py-2.5 rounded-full text-sm font-medium transition-all hover:shadow-lg hover:shadow-yellow-600/30"
+                className="hidden lg:inline-block bg-[#8A6F2D] hover:bg-[#9F7F3D] text-white px-5 py-2.5 rounded-full text-sm font-medium transition-all hover:shadow-lg hover:shadow-yellow-600/30"
               >
                 Calendar
               </Link>
@@ -135,7 +143,7 @@ export default function Home() {
         {/* Mobile Menu */}
         <div 
           className={`md:hidden bg-white border-t border-gray-100 overflow-hidden transition-all duration-300 ${
-            isMobileMenuOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
+            isMobileMenuOpen ? 'max-h-[28rem] opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
           <div className="px-4 py-4 space-y-3">
@@ -158,12 +166,6 @@ export default function Home() {
                 </button>
               )
             ))}
-            <Link 
-              href="/calendar" 
-              className="block bg-[#8A6F2D] text-white px-5 py-3 rounded-full text-sm font-medium text-center"
-            >
-              Calendar
-            </Link>
           </div>
         </div>
       </nav>
@@ -196,7 +198,7 @@ export default function Home() {
               We Are<br /><span className="gradient-text">St. Benedict the Moor</span>
             </h1>
           <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Everyone has a home at St. Benedict the Moor. Come join us and experience the love of Christ together.
+            Nebraska' only traditional black Catholic parish
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4 mb-25">
             <Link 
@@ -244,7 +246,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mt-16">
+<div className="grid md:grid-cols-3 gap-6 mt-16">
             <div className="modern-card p-6 text-center group">
               <div className="w-16 h-16 bg-[#8A6F2D]/10 rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:bg-[#8A6F2D] transition-colors">
                 <svg className="w-8 h-8 text-[#8A6F2D] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -255,14 +257,19 @@ export default function Home() {
               <p className="text-gray-600">Serving the Omaha community for over 100 years with faith and dedication.</p>
             </div>
 
-            <div className="modern-card p-6 text-center group">
+<div className="modern-card p-6 text-center group cursor-pointer" onClick={() => scrollToSection("family-of-parishes")}>
               <div className="w-16 h-16 bg-[#1E8E3E]/10 rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:bg-[#1E8E3E] transition-colors">
                 <svg className="w-8 h-8 text-[#1E8E3E] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                 </svg>
               </div>
               <h3 className="text-xl text-gray-800 mb-2 font-[family-name:var(--font-source-serif)]">All Are Welcome</h3>
               <p className="text-gray-600">Everyone has a home at St. Benedict the Moor. Come as you are.</p>
+              <div className="mt-3 flex justify-center">
+                <svg className="w-5 h-5 text-[#1E8E3E] animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+              </div>
             </div>
 
             <div className="modern-card p-6 text-center group">
@@ -271,7 +278,7 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl text-gray-800 mb-2 font-[family-name:var(--font-source-serif)]">Join Our Apostolic Priorities</h3>
+              <h3 className="text-xl text-gray-800 mb-2 font-[family-name:var(--font-source-serif)]">Our Apostolic Priorities</h3>
               <p className="text-gray-600">Experience the love of Christ together in our vibrant parish.</p>
               <Link href="/apostolic" className="inline-block mt-3 text-[#8A6F2D] hover:text-[#C9A227] font-medium text-sm">
                 Learn More →
@@ -488,8 +495,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Historic 24th Street Family of Parishes */}
-      <section className="py-20 bg-white">
+{/* Historic 24th Street Family of Parishes */}
+      <section id="family-of-parishes" className="py-20 bg-white scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <span className="text-[#8A6F2D] font-semibold text-sm tracking-wider">OUR FAMILY OF PARISHES</span>
@@ -524,7 +531,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold text-gray-800 mb-2 font-[family-name:var(--font-source-serif)]">St. John&apos;s</h3>
               <p className="text-gray-600 mb-4">Historic parish serving the community</p>
-              <a href="#" className="inline-block text-[#1E8E3E] hover:text-[#2da650] font-medium text-sm">
+              <a href="https://www.stjohns-creighton.org/" target="_blank" rel="noopener noreferrer" className="inline-block text-[#1E8E3E] hover:text-[#2da650] font-medium text-sm">
                 Visit Website →
               </a>
             </div>
@@ -664,12 +671,25 @@ export default function Home() {
                 <li><a href="http://www.usccb.org/bible/books-of-the-bible/index.cfm" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Bible</a></li>
               </ul>
             </div>
-          </div>
+</div>
           <div className="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
             <p>&copy; {new Date().getFullYear()} St. Benedict the Moor Catholic Church. All rights reserved.</p>
           </div>
         </div>
       </footer>
+
+      {/* Scroll to Top Button */}
+      <button
+        onClick={scrollToTop}
+        className={`fixed bottom-8 right-8 z-40 bg-[#8A6F2D] hover:bg-[#9F7F3D] text-white p-3 rounded-full shadow-lg transition-all duration-300 ${
+          showScrollTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+        }`}
+        aria-label="Scroll to top"
+      >
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+      </button>
     </div>
   );
 }
