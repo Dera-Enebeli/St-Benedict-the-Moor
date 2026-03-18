@@ -39,8 +39,6 @@ const teamMembers: Record<string, { name: string; role: string; email: string }[
     { name: "Maria R. Garcia", role: "Secretary", email: "mrgarcia@archomaha.org" },
     { name: "Robert D. Williams", role: "Member", email: "rdwilliams@archomaha.org" },
     { name: "Linda K. Johnson", role: "Member", email: "lkjohnson@archomaha.org" },
-    { name: "Charles E. Brown", role: "Member", email: "cebrown@archomaha.org" },
-    { name: "Annette M. Davis", role: "Member", email: "amdavis@archomaha.org" },
   ],
 };
 
@@ -619,32 +617,61 @@ const navLinks = [
             ))}
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          {/* Mobile: Stack all cards vertically */}
+          <div className="md:hidden space-y-4 max-w-sm mx-auto">
             {teamMembers[selectedTeam].map((member, index) => (
-              <div 
-                key={index} 
-                className="modern-card p-4 sm:p-6 text-center group hover:shadow-xl transition-all duration-300"
-              >
-                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#8A6F2D]/10 rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto group-hover:bg-[#8A6F2D] transition-colors duration-300">
-                  <svg className="w-8 h-8 sm:w-10 sm:h-10 text-[#8A6F2D] group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div key={index} className="modern-card p-4 text-center group">
+                <div className="w-16 h-16 bg-[#8A6F2D]/10 rounded-full flex items-center justify-center mb-3 mx-auto group-hover:bg-[#8A6F2D] transition-colors">
+                  <svg className="w-8 h-8 text-[#8A6F2D] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
                 </div>
-                <h3 className="text-base sm:text-lg font-bold text-gray-800 mb-1 font-[family-name:var(--font-source-serif)]">
-                  {member.name}
-                </h3>
-                <p className="text-[#8A6F2D] font-medium text-xs sm:text-sm mb-2 sm:mb-3">{member.role}</p>
-                <a 
-                  href={`mailto:${member.email}`} 
-                  className="inline-flex items-center gap-1 sm:gap-2 text-gray-500 hover:text-[#8A6F2D] text-xs sm:text-sm transition-colors break-all"
-                >
-                  <svg className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                  <span className="truncate sm:truncate-none">{member.email}</span>
+                <h3 className="text-base font-bold text-gray-800 mb-1 font-[family-name:var(--font-source-serif)]">{member.name}</h3>
+                <p className="text-[#8A6F2D] font-medium text-sm mb-1">{member.role}</p>
+                <a href={`mailto:${member.email}`} className="text-gray-500 hover:text-[#8A6F2D] text-xs transition-colors break-all">
+                  {member.email}
                 </a>
               </div>
             ))}
+          </div>
+
+          {/* Desktop: Inverted pyramid layout */}
+          <div className="hidden md:block max-w-5xl mx-auto">
+            {/* Row 1: 3 cards */}
+            <div className="grid md:grid-cols-3 gap-6 mb-6">
+              {teamMembers[selectedTeam].slice(0, 3).map((member, index) => (
+                <div key={index} className="modern-card p-6 text-center group">
+                  <div className="w-20 h-20 bg-[#8A6F2D]/10 rounded-full flex items-center justify-center mb-4 mx-auto group-hover:bg-[#8A6F2D] transition-colors">
+                    <svg className="w-10 h-10 text-[#8A6F2D] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-800 mb-1 font-[family-name:var(--font-source-serif)]">{member.name}</h3>
+                  <p className="text-[#8A6F2D] font-medium text-sm mb-2">{member.role}</p>
+                  <a href={`mailto:${member.email}`} className="text-gray-500 hover:text-[#8A6F2D] text-xs transition-colors">
+                    {member.email}
+                  </a>
+                </div>
+              ))}
+            </div>
+
+            {/* Row 2: 2 cards centered */}
+            <div className="flex justify-center gap-6">
+              {teamMembers[selectedTeam].slice(3, 5).map((member, index) => (
+                <div key={index + 3} className="modern-card p-6 text-center group w-full max-w-sm">
+                  <div className="w-20 h-20 bg-[#8A6F2D]/10 rounded-full flex items-center justify-center mb-4 mx-auto group-hover:bg-[#8A6F2D] transition-colors">
+                    <svg className="w-10 h-10 text-[#8A6F2D] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-800 mb-1 font-[family-name:var(--font-source-serif)]">{member.name}</h3>
+                  <p className="text-[#8A6F2D] font-medium text-sm mb-2">{member.role}</p>
+                  <a href={`mailto:${member.email}`} className="text-gray-500 hover:text-[#8A6F2D] text-xs transition-colors">
+                    {member.email}
+                  </a>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
