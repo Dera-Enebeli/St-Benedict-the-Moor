@@ -1,34 +1,53 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+const teams = [
+  { id: "parish", name: "St. Benedict The Moor Leadership Team" },
+  { id: "family", name: "Historic 24th Street Family of Parishes Leadership Team" },
+  { id: "finance", name: "Finance Committee" },
+  { id: "council", name: "Parish Council" },
+];
+
+const teamMembers: Record<string, { name: string; role: string; email: string }[]> = {
+  parish: [
+    { name: "Rev. David Korth", role: "Pastor", email: "dmkorth@archomaha.org" },
+    { name: "Thierry Mazimpaka", role: "Director of Discipleship", email: "tmazimapaka@archomaha.org" },
+    { name: "Michella Blankman", role: "Families of Faith Director", email: "meblankman@archomaha.org" },
+    { name: "Jacques Musavyimana", role: "Member", email: "jcmusavyimana@archomaha.org" },
+    { name: "Perlie Whitley", role: "Member", email: "whitley29295@gmail.com" },
+  ],
+  family: [
+    { name: "Rev. David Korth", role: "Pastor - St. Benedict the Moor", email: "dmkorth@archomaha.org" },
+    { name: "Rev. Patrick C. Mealey", role: "Pastor - Sacred Heart", email: "pmealey@archomaha.org" },
+    { name: "Fr. Joseph G. Kemper", role: "Pastor - St. John's", email: "jkemper@archomaha.org" },
+    { name: "Deacon Michael D. McGeary", role: "Deacon", email: "mmcgeary@archomaha.org" },
+    { name: "Deacon Robert L. Skloss", role: "Deacon", email: "rskloss@archomaha.org" },
+  ],
+  finance: [
+    { name: "Tony R. Carter", role: "Chairperson", email: "trcarter@archomaha.org" },
+    { name: "John H. Miller", role: "Vice Chairperson", email: "jhmiller@archomaha.org" },
+    { name: "Angela D. Williams", role: "Secretary", email: "adwilliams@archomaha.org" },
+    { name: "Michael R. Brown", role: "Member", email: "mrbrown@archomaha.org" },
+    { name: "Sarah L. Johnson", role: "Member", email: "sljohnson@archomaha.org" },
+  ],
+  council: [
+    { name: "Patricia A. Thomas", role: "President", email: "pathomas@archomaha.org" },
+    { name: "James L. Robinson", role: "Vice President", email: "jlrobinson@archomaha.org" },
+    { name: "Maria R. Garcia", role: "Secretary", email: "mrgarcia@archomaha.org" },
+    { name: "Robert D. Williams", role: "Member", email: "rdwilliams@archomaha.org" },
+    { name: "Linda K. Johnson", role: "Member", email: "lkjohnson@archomaha.org" },
+    { name: "Charles E. Brown", role: "Member", email: "cebrown@archomaha.org" },
+    { name: "Annette M. Davis", role: "Member", email: "amdavis@archomaha.org" },
+  ],
+};
+
 export default function Leadership() {
-  const teamMembers = [
-    {
-      name: "Rev. David Korth",
-      role: "Pastor",
-      email: "dmkorth@archomaha.org",
-    },
-    {
-      name: "Thierry Mazimpaka",
-      role: "Director of Discipleship",
-      email: "tmazimapaka@archomaha.org",
-    },
-    {
-      name: "Michella Blankman",
-      role: "Families of Faith Director",
-      email: "meblankman@archomaha.org",
-    },
-    {
-      name: "Jacques Musavyimana",
-      role: "Member",
-      email: "jcmusavyimana@archomaha.org",
-    },
-    {
-      name: "Perlie Whitley",
-      role: "Member",
-      email: "whitley29295@gmail.com",
-    },
-  ];
+  const [selectedTeam, setSelectedTeam] = useState("parish");
+
+  const currentMembers = teamMembers[selectedTeam] || [];
 
   return (
     <div className="min-h-screen bg-white">
@@ -83,8 +102,26 @@ export default function Leadership() {
 
       <section className="py-20 section-cream">
         <div className="max-w-4xl mx-auto px-4">
+          <div className="mb-8">
+            <label htmlFor="team-select" className="block text-sm font-medium text-gray-700 mb-2">
+              Select a Team
+            </label>
+            <select
+              id="team-select"
+              value={selectedTeam}
+              onChange={(e) => setSelectedTeam(e.target.value)}
+              className="w-full md:w-auto px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#8A6F2D] focus:border-transparent"
+            >
+              {teams.map((team) => (
+                <option key={team.id} value={team.id}>
+                  {team.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
           <div className="grid gap-6">
-            {teamMembers.map((member, index) => (
+            {currentMembers.map((member, index) => (
               <div 
                 key={index} 
                 className="bg-white rounded-xl p-6 md:p-8 shadow-lg flex flex-col md:flex-row items-start md:items-center gap-4 hover:shadow-xl transition-shadow"
